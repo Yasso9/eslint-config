@@ -1,34 +1,31 @@
 {
   "name": "@yasso/eslint-config",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Custom ESLint configuration with Vue, TypeScript, Nuxt, and comprehensive linting rules",
-  "type": "module",
-  "main": "./eslint.config.ts",
-  "exports": {
-    ".": "./eslint.config.ts"
-  },
-  "files": [
-    "eslint.config.ts",
-    "config"
-  ],
-  "scripts": {
-    "lint": "eslint",
-    "lint:fix": "eslint --fix"
-  },
   "keywords": [
     "eslint",
     "eslint-config",
+    "linting",
     "vue",
     "nuxt",
     "typescript",
-    "drizzle"
+    "drizzle",
+    "antfu",
+    "security",
+    "a11y",
+    "unicorn",
+    "code-quality",
+    "shareable-config"
   ],
-  "author": "Ilyas Turki",
   "license": "MIT",
-  "peerDependencies": {
-    "eslint": ">=9.0.0",
-    "typescript": ">=5.0.0"
+  "author": "Ilyas Turki",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
   },
+  "files": [
+    "src"
+  ],
   "dependencies": {
     "@antfu/eslint-config": "^6.0.0",
     "@eslint/js": "^9.34.0",
@@ -38,11 +35,13 @@
     "eslint-plugin-drizzle": "^0.2.3",
     "eslint-plugin-unicorn": "^61.0.2",
     "eslint-plugin-vuejs-accessibility": "^2.4.1",
-    "jiti": "^2.6.1",
     "typescript-eslint": "^8.46.2"
   },
+  "peerDependencies": {
+    "eslint": ">=9.0.0",
+    "typescript": ">=5.0.0"
+  },
   "devDependencies": {
-    "eslint": "^9.38.0",
-    "typescript": "^5.9.3"
+    "prettier": "^3.6.2"
   }
 }
