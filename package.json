@@ -1,7 +1,7 @@
 {
   "name": "@yasso/eslint-config",
   "version": "0.0.1",
-  "description": "Custom ESLint configuration with Vue, TypeScript, Nuxt, and comprehensive linting rules",
+  "description": "Custom ESLint configuration for Nuxt",
   "keywords": [
     "eslint",
     "eslint-config",
