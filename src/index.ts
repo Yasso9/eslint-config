@@ -1,3 +1,4 @@
+import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 import eslintConfigPrettier from "eslint-config-prettier";
 import antfu from "@antfu/eslint-config";
 
@@ -15,38 +16,68 @@ import unicorn from "./config/unicorn";
 import vue from "./config/vue";
 import vueOverrides from "./config/vue-overrides";
 
+export interface YassoOptions {
+  /**
+   * Enable Drizzle ORM linting rules
+   * @default false
+   */
+  drizzle?: boolean;
+  /**
+   * Files and directories to ignore
+   * @default []
+   */
+  ignores?: string[];
+
+  /**
+   * Additional options to pass to @antfu/eslint-config
+   */
+  [key: string]: unknown;
+}
+
 // https://github.com/antfu/eslint-config
-export default antfu(
-  {
-    stylistic: false,
+export default function yasso(options: YassoOptions = {}) {
+  const {
+    drizzle: enableDrizzle = false,
+    ignores = [],
+    ...restOptions
+  } = options;
 
-    vue: {
-      a11y: true,
+  const configs: TypedFlatConfigItem[] = [
+    eslint,
+    tseslint,
+    unicorn,
+    vue,
+    vueOverrides,
+    nuxt,
+    antfuLint,
+    imports,
+    node,
+  ];
+
+  if (enableDrizzle) {
+    configs.push(drizzle);
+  }
+
+  configs.push(security, markdown, comments, {
+    ...eslintConfigPrettier,
+    name: "prettier-compat",
+  });
+
+  return antfu(
+    {
+      stylistic: false,
+      vue: {
+        a11y: true,
+      },
+      typescript: true,
+
+      ignores,
+      ...restOptions,
     },
-    typescript: true,
-
-    ignores: [
-      "server/database/migrations/",
-      "eslint.config.ts",
-      "config/**/*.ts",
-    ],
-  },
-  eslint,
-  tseslint,
-  unicorn,
-  vue,
-  vueOverrides,
-  nuxt,
-  antfuLint,
-  imports,
-  node,
-  drizzle,
-  security,
-  markdown,
-  comments,
-  { ...eslintConfigPrettier, name: "prettier-compat" },
-).override("antfu/node/rules", {
-  rules: {
-    "node/prefer-global/process": ["warn", "always"],
-  },
-});
+    ...configs,
+  ).override("antfu/node/rules", {
+    rules: {
+      "node/prefer-global/process": ["warn", "always"],
+    },
+  });
+}

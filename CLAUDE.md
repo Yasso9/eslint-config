@@ -9,9 +9,33 @@ This is `@yasso/eslint-config`, a shareable ESLint configuration package built o
 ## Architecture
 
 ### Main Entry Point
-- `src/index.ts` - Main configuration file that composes all modular configs using the `@antfu/eslint-config` factory function
-- Enables Vue a11y checking and TypeScript support
-- Ignores: `server/database/migrations/`, `eslint.config.ts`, `config/**/*.ts`
+- `src/index.ts` - Exports a factory function `yasso(options)` that composes all modular configs using the `@antfu/eslint-config` factory function
+- Accepts `YassoOptions` to customize behavior (drizzle, ignores, and other @antfu options)
+- By default: enables Vue a11y checking and TypeScript support
+- Drizzle rules are **opt-in** (disabled by default, enable with `drizzle: true`)
+- Default ignores: none (can be customized via `ignores` option)
+
+### Usage
+
+```typescript
+// Basic usage with defaults (Drizzle disabled)
+import yasso from '@yasso/eslint-config'
+export default yasso()
+
+// Enable Drizzle ORM rules
+import yasso from '@yasso/eslint-config'
+export default yasso({ drizzle: true })
+
+// Customize multiple options
+import yasso from '@yasso/eslint-config'
+export default yasso({
+  drizzle: true,
+  ignores: ['server/database/migrations/', 'dist/'],
+  // Pass additional @antfu/eslint-config options
+  vue: { a11y: false },
+  typescript: true
+})
+```
 
 ### Modular Configuration Structure
 All rule configurations are in separate files under `src/config/`:
@@ -33,7 +57,7 @@ All rule configurations are in separate files under `src/config/`:
 ### Configuration Composition Order
 The configs are applied in this order (later configs can override earlier ones):
 1. Base `@antfu/eslint-config` with stylistic disabled and Vue a11y enabled
-2. eslint → tseslint → unicorn → vue → vueOverrides → nuxt → antfuLint → imports → node → drizzle → security → markdown → comments
+2. eslint → tseslint → unicorn → vue → vueOverrides → nuxt → antfuLint → imports → node → drizzle (optional, disabled by default) → security → markdown → comments
 3. `eslint-config-prettier` for final compatibility
 4. Override for `antfu/node/rules` to allow global process
 
@@ -72,13 +96,14 @@ eslint-config/
 
 ## Key Design Decisions
 
+- **Factory function pattern**: Exports a configurable factory function for flexibility
 - **No stylistic rules**: Stylistic formatting is disabled (`stylistic: false`) - use Prettier instead
 - **Import path enforcement**: Project enforces `~/` and `~~/` aliases over relative `../` paths
 - **Security-first**: Includes anti-trojan-source checking by default
 - **Vue-centric**: Designed for Vue 3 + Nuxt projects with script-setup API
 - **TypeScript strict**: Uses both stylistic and strict TypeScript configs
 - **Magic numbers**: `-1, 0, 1, 2, 10` are allowed as magic numbers
-- **Drizzle safety**: Requires WHERE clauses on database updates/deletes with custom db object names
+- **Drizzle safety**: Optional Drizzle ORM rules (opt-in via `drizzle: true`) that require WHERE clauses on database updates/deletes
 
 ## Adding New Rules
 
