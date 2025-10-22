@@ -1,5 +1,5 @@
 {
-  "name": "@yasso/eslint-config",
+  "name": "@turki/eslint-config",
   "version": "0.0.0",
   "description": "Custom ESLint configuration with Vue, TypeScript, Nuxt, and comprehensive linting rules",
   "type": "module",
@@ -23,7 +23,7 @@
     "typescript",
     "drizzle"
   ],
-  "author": "yasso",
+  "author": "Ilyas Turki",
   "license": "MIT",
   "peerDependencies": {
     "eslint": ">=9.0.0",
