@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is `@yasso/eslint-config`, a shareable ESLint configuration package built on top of `@antfu/eslint-config`. It provides opinionated linting rules for TypeScript, Vue, Nuxt, Node.js projects with support for Drizzle ORM and security checks.
+This is `@ilyasso/eslint-config`, a shareable ESLint configuration package built on top of `@antfu/eslint-config`. It provides opinionated linting rules for TypeScript, Vue, Nuxt, Node.js projects with support for Drizzle ORM and security checks.
 
 ## Architecture
 
 ### Main Entry Point
 
-- `src/index.ts` - Exports a factory function `yasso(options)` that composes all modular configs using the `@antfu/eslint-config` factory function
-- Accepts `YassoOptions` to customize behavior (drizzle, ignores, and other @antfu options)
+- `src/index.ts` - Exports a factory function `ilyasso(options)` that composes all modular configs using the `@antfu/eslint-config` factory function
+- Accepts `IlyassoOptions` to customize behavior (drizzle, ignores, and other @antfu options)
 - By default: enables Vue a11y checking and TypeScript support
 - Drizzle rules are **opt-in** (disabled by default, enable with `drizzle: true`)
 - Default ignores: none (can be customized via `ignores` option)
@@ -20,16 +20,16 @@ This is `@yasso/eslint-config`, a shareable ESLint configuration package built o
 
 ```typescript
 // Basic usage with defaults (Drizzle disabled)
-import yasso from "@yasso/eslint-config";
-export default yasso();
+import ilyasso from "@ilyasso/eslint-config";
+export default ilyasso();
 
 // Enable Drizzle ORM rules
-import yasso from "@yasso/eslint-config";
-export default yasso({ drizzle: true });
+import ilyasso from "@ilyasso/eslint-config";
+export default ilyasso({ drizzle: true });
 
 // Customize multiple options
-import yasso from "@yasso/eslint-config";
-export default yasso({
+import ilyasso from "@ilyasso/eslint-config";
+export default ilyasso({
   drizzle: true,
   ignores: ["server/database/migrations/", "dist/"],
   // Pass additional @antfu/eslint-config options

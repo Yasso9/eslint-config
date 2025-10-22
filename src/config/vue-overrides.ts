@@ -1,7 +1,7 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
 export default <TypedFlatConfigItem>{
-  name: "yasso/vue-overrides",
+  name: "ilyasso/vue-overrides",
   files: ["**/*.vue"],
   rules: {
     // False positive because doesn't check the template

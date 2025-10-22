@@ -16,7 +16,7 @@ import unicorn from "./config/unicorn";
 import vue from "./config/vue";
 import vueOverrides from "./config/vue-overrides";
 
-export interface YassoOptions {
+export interface IlyassoOptions {
   /**
    * Enable Drizzle ORM linting rules
    * @default false
@@ -55,7 +55,7 @@ export interface YassoOptions {
 }
 
 // https://github.com/antfu/eslint-config
-export default function yasso(options: YassoOptions = {}) {
+export default function ilyasso(options: IlyassoOptions = {}) {
   const {
     drizzle: enableDrizzle = false,
     ignores = [],
@@ -94,7 +94,7 @@ export default function yasso(options: YassoOptions = {}) {
   // Apply user rules if provided
   if (userRules) {
     configs.push({
-      name: "yasso/user-rules",
+      name: "ilyasso/user-rules",
       rules: userRules,
     });
   }

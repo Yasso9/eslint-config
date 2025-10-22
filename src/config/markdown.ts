@@ -1,7 +1,7 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
 export default <TypedFlatConfigItem>{
-  name: "yasso/markdown",
+  name: "ilyasso/markdown",
   files: ["**/*.md"],
   rules: {
     "unicorn/filename-case": "off",

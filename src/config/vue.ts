@@ -1,7 +1,7 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
 export default <TypedFlatConfigItem>{
-  name: "yasso/vue",
+  name: "ilyasso/vue",
   rules: {
     "vue/block-lang": ["warn", { script: { lang: "ts" } }],
     "vue/camelcase": "warn",

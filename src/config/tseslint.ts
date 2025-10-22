@@ -8,7 +8,7 @@ const rulesArray = [
 const mergedRules = Object.assign({}, ...rulesArray.filter(Boolean));
 
 export default <TypedFlatConfigItem>{
-  name: "yasso/typescript",
+  name: "ilyasso/typescript",
   files: ["**/*.ts", "**/*.vue"],
   // ignores: ['eslint.config.ts', 'config/**/*.ts'],
   rules: {

@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "@yasso/eslint-config",
+      "name": "@ilyasso/eslint-config",
       "dependencies": {
         "@antfu/eslint-config": "^6.0.0",
         "@eslint/js": "^9.34.0",

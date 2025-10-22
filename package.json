@@ -1,5 +1,5 @@
 {
-  "name": "@yasso/eslint-config",
+  "name": "@ilyasso/eslint-config",
   "version": "0.0.1",
   "description": "Custom ESLint configuration for Nuxt",
   "keywords": [

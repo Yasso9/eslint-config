@@ -1,7 +1,7 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
 export default <TypedFlatConfigItem>{
-  name: "yasso/node",
+  name: "ilyasso/node",
   files: ["server/**/*.ts", "shared/**/*.ts"],
   ignores: ["**/drizzle.config.ts"],
   rules: {

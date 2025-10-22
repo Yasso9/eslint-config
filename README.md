@@ -1,4 +1,4 @@
-# @yasso/eslint-config
+# @ilyasso/eslint-config
 
 > Opinionated ESLint configuration for TypeScript, Vue, and Nuxt projects
 
@@ -20,13 +20,13 @@ A comprehensive, shareable ESLint configuration built on top of [@antfu/eslint-c
 
 ```bash
 # Using Bun (recommended)
-bun add -D @yasso/eslint-config eslint typescript
+bun add -D @ilyasso/eslint-config eslint typescript
 
 # Using pnpm
-pnpm add -D @yasso/eslint-config eslint typescript
+pnpm add -D @ilyasso/eslint-config eslint typescript
 
 # Using npm
-npm install -D @yasso/eslint-config eslint typescript
+npm install -D @ilyasso/eslint-config eslint typescript
 ```
 
 ## Quick Start
@@ -36,9 +36,9 @@ npm install -D @yasso/eslint-config eslint typescript
 Create an `eslint.config.ts` (or `.js`) file in your project root:
 
 ```typescript
-import yasso from "@yasso/eslint-config";
+import ilyasso from "@ilyasso/eslint-config";
 
-export default yasso();
+export default ilyasso();
 ```
 
 ### Enable Drizzle ORM Rules
@@ -46,9 +46,9 @@ export default yasso();
 If you're using Drizzle ORM and want to enforce WHERE clauses on updates/deletes:
 
 ```typescript
-import yasso from "@yasso/eslint-config";
+import ilyasso from "@ilyasso/eslint-config";
 
-export default yasso({
+export default ilyasso({
   drizzle: true,
 });
 ```
@@ -58,9 +58,9 @@ export default yasso({
 #### Full Configuration Example
 
 ```typescript
-import yasso from "@yasso/eslint-config";
+import ilyasso from "@ilyasso/eslint-config";
 
-export default yasso({
+export default ilyasso({
   // Enable Drizzle ORM rules
   drizzle: true,
 
@@ -78,9 +78,9 @@ export default yasso({
 You can override or disable any rule using the `rules` option:
 
 ```typescript
-import yasso from "@yasso/eslint-config";
+import ilyasso from "@ilyasso/eslint-config";
 
-export default yasso({
+export default ilyasso({
   rules: {
     // Disable console warnings in development
     'no-console': 'off',
@@ -102,9 +102,9 @@ export default yasso({
 Use the `overrides` option for more advanced customization with file patterns:
 
 ```typescript
-import yasso from "@yasso/eslint-config";
+import ilyasso from "@ilyasso/eslint-config";
 
-export default yasso({
+export default ilyasso({
   overrides: {
     files: ['*.test.ts', '*.spec.ts'],
     rules: {
@@ -122,9 +122,9 @@ export default yasso({
 You can pass an array of override configs for different file patterns:
 
 ```typescript
-import yasso from "@yasso/eslint-config";
+import ilyasso from "@ilyasso/eslint-config";
 
-export default yasso({
+export default ilyasso({
   overrides: [
     {
       files: ['*.test.ts', '*.spec.ts'],

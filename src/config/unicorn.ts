@@ -2,7 +2,7 @@ import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 
 export default <TypedFlatConfigItem>{
-  name: "yasso/unicorn",
+  name: "ilyasso/unicorn",
   rules: {
     ...eslintPluginUnicorn.configs.all.rules,
     "unicorn/prevent-abbreviations": "off",

@@ -1,7 +1,7 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
 export default <TypedFlatConfigItem>{
-  name: "yasso/eslint",
+  name: "ilyasso/eslint",
   rules: {
     camelcase: "warn",
     // 'consistent-return': 'warn', // conflict with 'unicorn/no-useless-undefined'
