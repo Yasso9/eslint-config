@@ -12,6 +12,7 @@ A comprehensive, shareable ESLint configuration built on top of [@antfu/eslint-c
 - **Security-first** - Anti-trojan-source protection built-in
 - **Import enforcement** - Enforces `~/` and `~~/` aliases over relative `../` paths
 - **Optional Drizzle ORM** - Opt-in database safety rules (require WHERE clauses)
+- **Flexible overrides** - Easy rule customization with `rules` and `overrides` options
 - **Prettier-compatible** - Stylistic rules disabled, use Prettier for formatting
 - **Unicorn rules** - All `eslint-plugin-unicorn` rules with sensible overrides
 
@@ -54,6 +55,8 @@ export default yasso({
 
 ### Advanced Configuration
 
+#### Full Configuration Example
+
 ```typescript
 import yasso from "@yasso/eslint-config";
 
@@ -67,15 +70,83 @@ export default yasso({
     "server/database/migrations/",
     "*.config.ts",
   ],
+});
+```
 
-  // Disable Vue accessibility checks (not recommended)
-  vue: {
-    a11y: false,
+#### Override Specific Rules
+
+You can override or disable any rule using the `rules` option:
+
+```typescript
+import yasso from "@yasso/eslint-config";
+
+export default yasso({
+  rules: {
+    // Disable console warnings in development
+    'no-console': 'off',
+
+    // Enforce multi-word component names
+    'vue/multi-word-component-names': 'error',
+
+    // Allow magic numbers in specific cases
+    'no-magic-numbers': ['warn', { ignore: [-1, 0, 1, 2, 10, 100] }],
+
+    // Disable underscore dangle warnings
+    'no-underscore-dangle': 'off',
   },
+});
+```
 
-  // Pass any @antfu/eslint-config options
-  stylistic: false, // Already disabled by default
-  typescript: true, // Already enabled by default
+#### File-Specific Overrides
+
+Use the `overrides` option for more advanced customization with file patterns:
+
+```typescript
+import yasso from "@yasso/eslint-config";
+
+export default yasso({
+  overrides: {
+    files: ['*.test.ts', '*.spec.ts'],
+    rules: {
+      // Allow magic numbers in tests
+      'no-magic-numbers': 'off',
+      // Allow console in tests
+      'no-console': 'off',
+    },
+  },
+});
+```
+
+#### Multiple Override Configs
+
+You can pass an array of override configs for different file patterns:
+
+```typescript
+import yasso from "@yasso/eslint-config";
+
+export default yasso({
+  overrides: [
+    {
+      files: ['*.test.ts', '*.spec.ts'],
+      rules: {
+        'no-magic-numbers': 'off',
+        'no-console': 'off',
+      },
+    },
+    {
+      files: ['scripts/**/*.ts'],
+      rules: {
+        'no-console': 'off',
+        'node/prefer-global/process': 'off',
+      },
+    },
+    {
+      files: ['*.config.ts', '*.config.js'],
+      rules: {
+        'no-magic-numbers': 'off',
+      },
+    },
+  ],
 });
 ```
 

@@ -29,6 +29,26 @@ export interface YassoOptions {
   ignores?: string[];
 
   /**
+   * Override or add specific ESLint rules
+   * Applied as the final config, giving it highest priority
+   * @example
+   * ```ts
+   * { rules: { 'no-console': 'off', 'vue/multi-word-component-names': 'error' } }
+   * ```
+   */
+  rules?: TypedFlatConfigItem["rules"];
+
+  /**
+   * Additional config objects for advanced customization
+   * Can be a single config object or an array of config objects
+   * @example
+   * ```ts
+   * { overrides: { files: ['*.test.ts'], rules: { 'no-magic-numbers': 'off' } } }
+   * ```
+   */
+  overrides?: TypedFlatConfigItem | TypedFlatConfigItem[];
+
+  /**
    * Additional options to pass to @antfu/eslint-config
    */
   [key: string]: unknown;
@@ -39,6 +59,8 @@ export default function yasso(options: YassoOptions = {}) {
   const {
     drizzle: enableDrizzle = false,
     ignores = [],
+    rules: userRules,
+    overrides: userOverrides,
     ...restOptions
   } = options;
 
@@ -58,7 +80,26 @@ export default function yasso(options: YassoOptions = {}) {
     configs.push(drizzle);
   }
 
-  configs.push(security, markdown, comments, {
+  configs.push(security, markdown, comments);
+
+  // Apply user overrides if provided
+  if (userOverrides) {
+    if (Array.isArray(userOverrides)) {
+      configs.push(...userOverrides);
+    } else {
+      configs.push(userOverrides);
+    }
+  }
+
+  // Apply user rules if provided
+  if (userRules) {
+    configs.push({
+      name: "yasso/user-rules",
+      rules: userRules,
+    });
+  }
+
+  configs.push({
     ...eslintConfigPrettier,
     name: "prettier-compat",
   });
