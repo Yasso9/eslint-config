@@ -1,10 +1,10 @@
-import type { TypedFlatConfigItem } from '@antfu/eslint-config'
+import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
 export default <TypedFlatConfigItem>{
-    name: 'yasso/comments',
-    rules: {
-        // 'eslint-comments/disable-enable-pair': 'warn',
-        'eslint-comments/no-unused-disable': 'warn',
-        'eslint-comments/no-unlimited-disable': 'off',
-    },
-}
+  name: "yasso/comments",
+  rules: {
+    // 'eslint-comments/disable-enable-pair': 'warn',
+    "eslint-comments/no-unused-disable": "warn",
+    "eslint-comments/no-unlimited-disable": "off",
+  },
+};
