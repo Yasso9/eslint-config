@@ -30,16 +30,16 @@
     "typescript": ">=5.0.0"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^3.8.0",
-    "@nuxt/eslint-plugin": "^0.6.2",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-anti-trojan-source": "^1.2.1",
+    "@antfu/eslint-config": "^6.0.0",
+    "@nuxt/eslint-plugin": "^1.9.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-anti-trojan-source": "^1.1.1",
     "eslint-plugin-drizzle": "^0.2.3",
-    "eslint-plugin-unicorn": "^56.0.1",
-    "typescript-eslint": "^8.14.0"
+    "eslint-plugin-unicorn": "^61.0.2",
+    "typescript-eslint": "^8.46.2"
   },
   "devDependencies": {
-    "eslint": "^9.15.0",
-    "typescript": "^5.6.3"
+    "eslint": "^9.38.0",
+    "typescript": "^5.9.3"
   }
 }
