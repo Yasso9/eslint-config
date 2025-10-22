@@ -9,12 +9,12 @@ This is `@yasso/eslint-config`, a shareable ESLint configuration package built o
 ## Architecture
 
 ### Main Entry Point
-- `eslint.config.ts` - Main configuration file that composes all modular configs using the `@antfu/eslint-config` factory function
+- `src/index.ts` - Main configuration file that composes all modular configs using the `@antfu/eslint-config` factory function
 - Enables Vue a11y checking and TypeScript support
 - Ignores: `server/database/migrations/`, `eslint.config.ts`, `config/**/*.ts`
 
 ### Modular Configuration Structure
-All rule configurations are in separate files under `config/`:
+All rule configurations are in separate files under `src/config/`:
 
 - **`antfu.ts`** - Rules for `@antfu/eslint-config` specific rules (indent-unindent, top-level-function, etc.)
 - **`comments.ts`** - ESLint comment directive rules (unused disable warnings)
@@ -37,10 +37,38 @@ The configs are applied in this order (later configs can override earlier ones):
 3. `eslint-config-prettier` for final compatibility
 4. Override for `antfu/node/rules` to allow global process
 
+## Project Structure
+
+```
+eslint-config/
+├── src/
+│   ├── index.ts          # Main entry point (exports ESLint config)
+│   └── config/           # Modular rule configurations
+│       ├── antfu.ts
+│       ├── comments.ts
+│       ├── drizzle.ts
+│       ├── eslint.ts
+│       ├── imports.ts
+│       ├── markdown.ts
+│       ├── node.ts
+│       ├── nuxt.ts
+│       ├── security.ts
+│       ├── tseslint.ts
+│       ├── unicorn.ts
+│       ├── vue.ts
+│       └── vue-overrides.ts
+├── package.json
+├── LICENSE               # MIT License
+├── .gitignore
+└── CLAUDE.md            # This file
+```
+
 ## Commands
 
-- `npm run lint` - Run ESLint on the codebase
-- `npm run lint:fix` - Run ESLint with auto-fix
+- `bun run lint` - Run ESLint on the codebase
+- `bun run lint:fix` - Run ESLint with auto-fix
+
+**Note:** This project uses Bun as its package manager (`packageManager: "bun@1.3.0"` in package.json)
 
 ## Key Design Decisions
 
@@ -54,7 +82,14 @@ The configs are applied in this order (later configs can override earlier ones):
 
 ## Adding New Rules
 
-1. Identify the appropriate config file in `config/` based on the rule's plugin/category
+1. Identify the appropriate config file in `src/config/` based on the rule's plugin/category
 2. Add the rule to the `rules` object
 3. Most rules use `'warn'` severity, use `'error'` for critical issues
 4. The config uses TypedFlatConfigItem from `@antfu/eslint-config` for type safety
+
+## Package Information
+
+- **Version**: 0.0.1
+- **Package Manager**: Bun 1.3.0
+- **License**: MIT (see LICENSE file)
+- **Author**: Ilyas Turki
