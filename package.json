@@ -1,0 +1,45 @@
+{
+  "name": "@yasso/eslint-config",
+  "version": "0.0.0",
+  "description": "Custom ESLint configuration with Vue, TypeScript, Nuxt, and comprehensive linting rules",
+  "type": "module",
+  "main": "./eslint.config.ts",
+  "exports": {
+    ".": "./eslint.config.ts"
+  },
+  "files": [
+    "eslint.config.ts",
+    "config"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "vue",
+    "nuxt",
+    "typescript",
+    "drizzle"
+  ],
+  "author": "yasso",
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": ">=9.0.0",
+    "typescript": ">=5.0.0"
+  },
+  "dependencies": {
+    "@antfu/eslint-config": "^3.8.0",
+    "@nuxt/eslint-plugin": "^0.6.2",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-anti-trojan-source": "^1.2.1",
+    "eslint-plugin-drizzle": "^0.2.3",
+    "eslint-plugin-unicorn": "^56.0.1",
+    "typescript-eslint": "^8.14.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0",
+    "typescript": "^5.6.3"
+  }
+}
