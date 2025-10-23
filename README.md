@@ -8,12 +8,12 @@ A comprehensive, shareable ESLint configuration built on top of [@antfu/eslint-c
 
 - **TypeScript-first** - Strict TypeScript rules with full type checking
 - **Vue 3 optimized** - Script setup API, accessibility rules via `vue-a11y`
+- **Import enforcement** - Enforces `~/` and `~~/` aliases over relative `../` paths or `@/` paths
 - **Nuxt support** - Nuxt-specific rules and conventions
 - **Security-first** - Anti-trojan-source protection built-in
-- **Import enforcement** - Enforces `~/` and `~~/` aliases over relative `../` paths
-- **Optional Drizzle ORM** - Opt-in database safety rules (require WHERE clauses)
 - **Flexible overrides** - Easy rule customization with `rules` and `overrides` options
 - **Prettier-compatible** - Stylistic rules disabled, use Prettier for formatting
+- **Optional Drizzle ORM** - Opt-in database safety rules (require WHERE clauses)
 - **Unicorn rules** - All `eslint-plugin-unicorn` rules with sensible overrides
 
 ## Installation
@@ -41,18 +41,6 @@ import ilyasso from "@ilyasso/eslint-config";
 export default ilyasso();
 ```
 
-### Enable Drizzle ORM Rules
-
-If you're using Drizzle ORM and want to enforce WHERE clauses on updates/deletes:
-
-```typescript
-import ilyasso from "@ilyasso/eslint-config";
-
-export default ilyasso({
-  drizzle: true,
-});
-```
-
 ### Advanced Configuration
 
 #### Full Configuration Example
@@ -70,17 +58,8 @@ export default ilyasso({
     "server/database/migrations/",
     "*.config.ts",
   ],
-});
-```
 
-#### Override Specific Rules
-
-You can override or disable any rule using the `rules` option:
-
-```typescript
-import ilyasso from "@ilyasso/eslint-config";
-
-export default ilyasso({
+  // You can override or disable any rule using the `rules` option:
   rules: {
     // Disable console warnings in development
     'no-console': 'off',
@@ -94,17 +73,8 @@ export default ilyasso({
     // Disable underscore dangle warnings
     'no-underscore-dangle': 'off',
   },
-});
-```
 
-#### File-Specific Overrides
-
-Use the `overrides` option for more advanced customization with file patterns:
-
-```typescript
-import ilyasso from "@ilyasso/eslint-config";
-
-export default ilyasso({
+  // Use the `overrides` option for more advanced customization with file patterns:
   overrides: {
     files: ['*.test.ts', '*.spec.ts'],
     rules: {
@@ -175,8 +145,8 @@ Add these scripts to your `package.json`:
 ```json
 {
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   }
