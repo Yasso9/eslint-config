@@ -155,7 +155,7 @@ Add these scripts to your `package.json`:
 
 ## License
 
-[MIT](./LICENSE) © 2025 [Ilyas Turki](https://github.com/Yasso9)
+[MIT](./LICENSE) © 2025 [Ilyas Turki](https://github.com/ilyasso)
 
 ## Credits
 
