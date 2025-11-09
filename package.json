@@ -25,10 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ilyasso/eslint-config.git"
+    "url": "git+https://github.com/ilyasturki/eslint-config.git"
   },
-  "homepage": "https://github.com/ilyasso/eslint-config#readme",
-  "bugs": "https://github.com/ilyasso/eslint-config/issues",
+  "homepage": "https://github.com/ilyasturki/eslint-config#readme",
+  "bugs": "https://github.com/ilyasturki/eslint-config/issues",
   "files": [
     "src"
   ],
