@@ -15,5 +15,12 @@ export default <TypedFlatConfigItem>{
         checkArguments: false,
       },
     ],
+    "unicorn/filename-case": [
+      "warn",
+      {
+        case: "kebabCase",
+        ignore: ["README.md", "CLAUDE.md", "AGENTS.md", "GEMINI.md"],
+      },
+    ],
   },
 };

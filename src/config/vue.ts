@@ -38,7 +38,6 @@ export default <TypedFlatConfigItem>{
     "vue/no-root-v-if": "warn",
     "vue/no-static-inline-styles": "warn",
     "vue/no-template-target-blank": "warn",
-    "vue/no-undef-components": "warn",
     "vue/no-undef-properties": ["error", { ignores: [String.raw`/^\$/`] }],
     "vue/no-unused-emit-declarations": "warn",
     "vue/no-unused-properties": "warn",
