@@ -49,6 +49,7 @@
     "@typescript-eslint/parser": "^8.59.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-anti-trojan-source": "^1.1.2",
+    "eslint-plugin-better-tailwindcss": "^4.5.0",
     "eslint-plugin-check-file": "^3.3.1",
     "eslint-plugin-depend": "^1.5.0",
     "eslint-plugin-drizzle": "^0.2.3",

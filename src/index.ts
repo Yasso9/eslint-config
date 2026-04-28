@@ -16,7 +16,10 @@ import packageJson from "./config/package-json";
 import promise from "./config/promise";
 import security from "./config/security";
 import securityExtra from "./config/security-extra";
+import type { TailwindOptions } from "./config/tailwind";
+
 import sonarjs from "./config/sonarjs";
+import tailwind from "./config/tailwind";
 import tseslint from "./config/tseslint";
 import tseslintTypecheck from "./config/tseslint-typecheck";
 import unicorn from "./config/unicorn";
@@ -67,6 +70,15 @@ export interface IlyassoOptions {
    * @default true
    */
   nuxt?: boolean;
+
+  /**
+   * Enable `eslint-plugin-better-tailwindcss` (class order, duplicate/conflicting/
+   * unknown classes, deprecated utilities, etc.).
+   * Pass `true` to enable with auto-detection, or an object to point the plugin
+   * at your Tailwind v4 CSS entry (`entryPoint`) or v3 config (`tailwindConfig`).
+   * @default false
+   */
+  tailwind?: boolean | TailwindOptions;
 
   /**
    * Scope of the Node.js linting rules.
@@ -142,6 +154,7 @@ interface OptionalConfigFlags {
   enableSecurity: boolean;
   enablePackageJson: boolean;
   enableStrict: boolean;
+  tailwindOption: boolean | TailwindOptions;
 }
 
 function collectOptionalConfigs(
@@ -156,6 +169,9 @@ function collectOptionalConfigs(
   }
   if (flags.enableSecurity) out.push(securityExtra);
   if (flags.enablePackageJson) out.push(packageJson);
+  if (flags.tailwindOption) {
+    out.push(tailwind(typeof flags.tailwindOption === "object" ? flags.tailwindOption : {}));
+  }
   out.push(flags.enableStrict ? strict : disableStrict);
   return out;
 }
@@ -170,6 +186,7 @@ export default function ilyasso(options: IlyassoOptions = {}) {
     packageJson: enablePackageJson = false,
     vue: enableVue = true,
     nuxt: enableNuxt = true,
+    tailwind: tailwindOption = false,
     node: nodeOption,
     ignores = [],
     rules: userRules,
@@ -207,6 +224,7 @@ export default function ilyasso(options: IlyassoOptions = {}) {
       enableSecurity,
       enablePackageJson,
       enableStrict,
+      tailwindOption,
     }),
   ];
 

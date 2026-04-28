@@ -15,6 +15,7 @@ A strict and opinionated ESLint configuration built on top of [@antfu/eslint-con
 - **Flexible overrides** - Easy rule customization with `rules` and `overrides` options
 - **Prettier-compatible** - Stylistic rules disabled, use Prettier for formatting
 - **Drizzle ORM** - database safety rules (require WHERE clauses)
+- **Tailwind CSS** - opt-in `eslint-plugin-better-tailwindcss` (class order, duplicate/conflicting/unknown classes, deprecated utilities)
 - **Repo hygiene** - `eslint-plugin-depend` (flags deprecated deps) and `eslint-plugin-check-file` (kebab-case folders) always on; `eslint-plugin-package-json` behind a flag
 
 ## Installation
@@ -84,6 +85,19 @@ interface IlyassoOptions {
    * @default false
    */
   drizzle?: boolean;
+
+  /**
+   * Enable `eslint-plugin-better-tailwindcss` (class order, duplicate/conflicting/
+   * unknown classes, deprecated utilities, etc.).
+   * Pass `true` for auto-detection, or an object to point the plugin at your
+   * Tailwind v4 CSS entry (`entryPoint`) or v3 config (`tailwindConfig`).
+   * @default false
+   */
+  tailwind?: boolean | {
+    entryPoint?: string;
+    tailwindConfig?: string;
+    files?: string[];
+  };
 
   /**
    * Enable eslint-plugin-security rules (ReDoS, non-literal fs paths,
@@ -194,6 +208,34 @@ export default ilyasso({
   ],
 });
 ```
+
+#### Tailwind CSS
+
+Enable `eslint-plugin-better-tailwindcss` and point it at your Tailwind config so
+the plugin can resolve your custom theme:
+
+```typescript
+import ilyasso from "@ilyasso/eslint-config";
+
+// Tailwind v4 (CSS-first config)
+export default ilyasso({
+  tailwind: { entryPoint: "app/assets/css/main.css" },
+});
+
+// Tailwind v3 (JS config)
+export default ilyasso({
+  tailwind: { tailwindConfig: "tailwind.config.ts" },
+});
+```
+
+The recommended preset enables class-order, duplicate, conflicting,
+deprecated, and unknown-class rules. Stylistic rules report as warnings;
+correctness rules as errors. Lints `**/*.vue` and `**/*.{ts,tsx,js,jsx}` by
+default — pass `files` to override.
+
+> If you also use `prettier-plugin-tailwindcss`, disable
+> `better-tailwindcss/enforce-consistent-class-order` via the `rules` option to
+> avoid the two formatters fighting over class order.
 
 #### TypeScript Type Checking with Nuxt
 
