@@ -163,14 +163,19 @@ function collectOptionalConfigs(
   const out: TypedFlatConfigItem[] = [];
   if (flags.enableVue) out.push(vue);
   if (flags.enableNuxt) out.push(nuxt);
-  if (flags.enableTypecheck) out.push(tseslintTypecheck(flags.typecheckProject));
+  if (flags.enableTypecheck)
+    out.push(tseslintTypecheck(flags.typecheckProject));
   if (flags.drizzleOption) {
     out.push(drizzle(resolveDrizzleObjectNames(flags.drizzleOption)));
   }
   if (flags.enableSecurity) out.push(securityExtra);
   if (flags.enablePackageJson) out.push(packageJson);
   if (flags.tailwindOption) {
-    out.push(tailwind(typeof flags.tailwindOption === "object" ? flags.tailwindOption : {}));
+    out.push(
+      tailwind(
+        typeof flags.tailwindOption === "object" ? flags.tailwindOption : {},
+      ),
+    );
   }
   out.push(flags.enableStrict ? strict : disableStrict);
   return out;
@@ -229,7 +234,9 @@ export default function ilyasso(options: IlyassoOptions = {}) {
   ];
 
   if (userOverrides) {
-    configs.push(...(Array.isArray(userOverrides) ? userOverrides : [userOverrides]));
+    configs.push(
+      ...(Array.isArray(userOverrides) ? userOverrides : [userOverrides]),
+    );
   }
 
   if (userRules) {
@@ -250,7 +257,10 @@ export default function ilyasso(options: IlyassoOptions = {}) {
       vue: enableVue ? { a11y: true } : false,
       typescript: true,
 
-      ignores,
+      ignores: (defaults) => [
+        ...defaults.filter((pattern) => pattern !== "**/.claude"),
+        ...ignores,
+      ],
       ...restOptions,
     },
     ...configs,
