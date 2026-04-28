@@ -6,6 +6,23 @@ export default {
   rules: {
     // 'import/no-default-export': 'warn',
 
+    "perfectionist/sort-imports": [
+      "error",
+      {
+        type: "natural",
+        order: "asc",
+        newlinesBetween: 1,
+        internalPattern: ["^~/", "^~~/", "^@/", "^@@/"],
+        groups: [
+          "type",
+          ["builtin", "external"],
+          "internal",
+          ["parent", "sibling", "index"],
+          "side-effect",
+        ],
+      },
+    ],
+
     // Always uses @ or ./ for import
     "no-restricted-imports": [
       "error",

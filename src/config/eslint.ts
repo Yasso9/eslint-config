@@ -74,8 +74,6 @@ export default {
     "no-console": ["warn", { allow: ["warn", "error"] }],
     "no-useless-return": "warn",
 
-    "perfectionist/sort-imports": "off",
-
     // Overrides
     "array-callback-return": [
       "error",

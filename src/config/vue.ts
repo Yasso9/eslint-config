@@ -11,9 +11,7 @@ export default {
       "warn",
       "kebab-case",
       {
-        ignores: [
-          String.raw`/^[a-z]+(?:-[a-z]+)*:[a-z]+(?:-[a-z]+)*$/u`,
-        ],
+        ignores: [String.raw`/^[a-z]+(?:-[a-z]+)*:[a-z]+(?:-[a-z]+)*$/u`],
       },
     ],
     "vue/define-emits-declaration": "warn",
@@ -47,7 +45,7 @@ export default {
     "vue/no-setup-props-reactivity-loss": "error",
     "vue/no-undef-components": "error",
     "vue/no-v-html": "error",
-    "vue/require-default-prop": "warn",
+    "vue/require-default-prop": "off",
     "vue/no-root-v-if": "warn",
     "vue/no-static-inline-styles": ["warn", { allowBinding: true }],
     "vue/no-template-target-blank": "warn",
