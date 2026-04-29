@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import betterTailwindcss from "eslint-plugin-better-tailwindcss";
 
 export interface TailwindOptions {
@@ -25,7 +26,9 @@ const DEFAULT_FILES = [
   "**/*.{js,jsx,mjs,cjs}",
 ];
 
-export default function tailwind(options: TailwindOptions): TypedFlatConfigItem {
+export default function tailwind(
+  options: TailwindOptions,
+): TypedFlatConfigItem {
   const settings: { entryPoint?: string; tailwindConfig?: string } = {};
   if (options.entryPoint) settings.entryPoint = options.entryPoint;
   if (options.tailwindConfig) settings.tailwindConfig = options.tailwindConfig;
@@ -41,6 +44,8 @@ export default function tailwind(options: TailwindOptions): TypedFlatConfigItem 
     },
     rules: {
       ...betterTailwindcss.configs.recommended.rules,
+      "better-tailwindcss/enforce-consistent-line-wrapping": "off",
+      "better-tailwindcss/no-unknown-classes": "off",
     },
   };
 }
