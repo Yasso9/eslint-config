@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import securityPlugin from "eslint-plugin-security";
 
 export default {

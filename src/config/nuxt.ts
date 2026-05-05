@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import pluginNuxt from "@nuxt/eslint-plugin";
 
 export default {

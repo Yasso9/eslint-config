@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import checkFilePlugin from "eslint-plugin-check-file";
 
 export default {

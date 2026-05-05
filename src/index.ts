@@ -1,11 +1,14 @@
+import type { TailwindOptions } from "./config/tailwind";
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
-import eslintConfigPrettier from "eslint-config-prettier";
+
 import antfu from "@antfu/eslint-config";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 import antfuLint from "./config/antfu";
 import checkFile from "./config/check-file";
 import comments from "./config/comments";
 import depend from "./config/depend";
+import disableStrict from "./config/disable-strict";
 import drizzle from "./config/drizzle";
 import eslint from "./config/eslint";
 import imports from "./config/imports";
@@ -16,16 +19,13 @@ import packageJson from "./config/package-json";
 import promise from "./config/promise";
 import security from "./config/security";
 import securityExtra from "./config/security-extra";
-import type { TailwindOptions } from "./config/tailwind";
-
 import sonarjs from "./config/sonarjs";
+import strict from "./config/strict";
 import tailwind from "./config/tailwind";
 import tseslint from "./config/tseslint";
 import tseslintTypecheck from "./config/tseslint-typecheck";
 import unicorn from "./config/unicorn";
 import vue from "./config/vue";
-import disableStrict from "./config/disable-strict";
-import strict from "./config/strict";
 
 export interface IlyassoOptions {
   typecheck?: {

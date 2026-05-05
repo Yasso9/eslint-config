@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import tseslint from "typescript-eslint";
 
 const rulesArray = [

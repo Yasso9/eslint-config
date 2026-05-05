@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 
 export default {

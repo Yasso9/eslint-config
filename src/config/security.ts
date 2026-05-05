@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import antiTrojanPlugin from "eslint-plugin-anti-trojan-source";
 import noSecretsPlugin from "eslint-plugin-no-secrets";
 

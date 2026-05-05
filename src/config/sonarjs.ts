@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import sonarjsPlugin from "eslint-plugin-sonarjs";
 
 export default {

@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import packageJsonPlugin from "eslint-plugin-package-json";
 
 export default {

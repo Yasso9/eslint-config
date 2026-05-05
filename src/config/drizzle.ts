@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import drizzlePlugin from "eslint-plugin-drizzle";
 
 export default function drizzle(objectNames: string[]): TypedFlatConfigItem {

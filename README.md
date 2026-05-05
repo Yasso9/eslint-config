@@ -93,11 +93,13 @@ interface IlyassoOptions {
    * Tailwind v4 CSS entry (`entryPoint`) or v3 config (`tailwindConfig`).
    * @default false
    */
-  tailwind?: boolean | {
-    entryPoint?: string;
-    tailwindConfig?: string;
-    files?: string[];
-  };
+  tailwind?:
+    | boolean
+    | {
+        entryPoint?: string;
+        tailwindConfig?: string;
+        files?: string[];
+      };
 
   /**
    * Enable eslint-plugin-security rules (ReDoS, non-literal fs paths,

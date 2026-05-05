@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+
 import promisePlugin from "eslint-plugin-promise";
 
 export default {
