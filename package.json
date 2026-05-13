@@ -44,9 +44,9 @@
     "typescript": ">=5.0.0"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^8.2.0",
+    "@antfu/eslint-config": "^9.0.0",
     "@nuxt/eslint-plugin": "^1.15.2",
-    "@typescript-eslint/parser": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-anti-trojan-source": "^1.1.4",
     "eslint-plugin-better-tailwindcss": "^4.5.0",
@@ -60,12 +60,12 @@
     "eslint-plugin-sonarjs": "^4.0.3",
     "eslint-plugin-unicorn": "^64.0.0",
     "eslint-plugin-vuejs-accessibility": "^2.5.0",
-    "typescript-eslint": "^8.59.1",
+    "typescript-eslint": "^8.59.3",
     "vue-eslint-parser": "^10.4.0"
   },
   "devDependencies": {
     "eslint": "^10.3.0",
-    "jiti": "^2.6.1",
+    "jiti": "^2.7.0",
     "prettier": "^3.8.3",
     "typescript": "^6.0.3"
   }
